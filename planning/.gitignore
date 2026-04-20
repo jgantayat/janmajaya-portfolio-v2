@@ -1,0 +1,5 @@
+# Resume PDF — contains personal contact info, keep off public repo
+*.pdf
+
+# Claude Code internal files
+.claude/
