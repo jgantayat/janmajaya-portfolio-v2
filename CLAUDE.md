@@ -19,15 +19,33 @@ Angular 21 portfolio app using **standalone components** (no NgModules) and **si
 
 **Bootstrap**: `src/main.ts` → `bootstrapApplication(App, appConfig)`. Providers (router, etc.) are registered in `src/app/app.config.ts`.
 
-**Routing**: `src/app/app.routes.ts` (currently empty). The root `App` component hosts `<router-outlet>`.
+**Routing**: `src/app/app.routes.ts`. The root `App` component hosts `<router-outlet>`. All feature routes must use lazy loading (`loadComponent`).
 
-**State**: Use Angular Signals (`signal()`, `computed()`, `effect()`) for all reactive state — not RxJS subjects or NgRx.
+**State**: Use Angular Signals (`signal()`, `computed()`, `effect()`) for all reactive state — not RxJS subjects or NgRx. Never call `signal.mutate()`; use `update()` or `set()`.
 
-**Styling**: Pure CSS, no framework. CSS custom properties are defined in `src/app/app.css` using OKLCh color space (`--bright-blue`, `--electric-violet`, `--vivid-pink`, etc.) with Inter/Inter Tight fonts. Mobile breakpoint is 650px. Each component has its own `.css` file; global rules go in `src/styles.css`.
+**Styling**: Pure CSS, no framework. CSS custom properties (OKLCh color space: `--bright-blue`, `--electric-violet`, `--vivid-pink`, etc.) and font stack (Inter/Inter Tight) are defined in a `<style>` block inside `src/app/app.html` on `:host` — they cascade to all child components. Mobile breakpoint is 650px. Each component has its own `.css` file; global rules go in `src/styles.css`.
 
 **Testing**: Vitest (not Jest). Test files live alongside source as `*.spec.ts`. jsdom is the DOM environment.
 
-**TypeScript**: All strict flags enabled (`strict`, `noImplicitOverride`, `noImplicitReturns`, `noFallthroughCasesInSwitch`). Avoid `any`.
+**TypeScript**: All strict flags enabled (`strict`, `noImplicitOverride`, `noImplicitReturns`, `noFallthroughCasesInSwitch`). Avoid `any`; use `unknown` when the type is uncertain.
+
+## Angular coding rules
+
+These are non-obvious constraints that override default instincts:
+
+- **No `standalone: true`** — it is the default in Angular v20+ and must not be set explicitly
+- **`ChangeDetectionStrategy.OnPush`** on every component
+- **`input()` / `output()` functions** instead of `@Input` / `@Output` decorators
+- **`inject()`** instead of constructor injection in services and components
+- **`host` object** in `@Component`/`@Directive` instead of `@HostBinding` / `@HostListener`
+- **`[class.foo]` / `[style.foo]`** bindings instead of `ngClass` / `ngStyle`
+- **Native control flow** (`@if`, `@for`, `@switch`) instead of `*ngIf`, `*ngFor`, `*ngSwitch`
+- **`NgOptimizedImage`** for all static images (does not work for inline base64)
+- **WCAG AA** accessibility minimum on all components (AXE checks, color contrast, ARIA, focus management)
+
+## Workflow
+
+Before implementing any feature or component, write a plan under `_plan/<feature-name>.md` and wait for approval. Only implement after the plan is confirmed.
 
 ## Project context
 
