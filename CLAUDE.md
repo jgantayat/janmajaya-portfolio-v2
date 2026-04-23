@@ -17,13 +17,13 @@ To run a single test file: `npx vitest run src/app/app.spec.ts`
 
 Angular 21 portfolio app using **standalone components** (no NgModules) and **signals** for reactive state.
 
-**Bootstrap**: `src/main.ts` → `bootstrapApplication(App, appConfig)`. Providers (router, etc.) are registered in `src/app/app.config.ts`.
+**Entry point**: `src/main.ts` → `bootstrapApplication(App, appConfig)`. Providers (router, etc.) are registered in `src/app/app.config.ts`.
 
 **Routing**: `src/app/app.routes.ts`. The root `App` component hosts `<router-outlet>`. All feature routes must use lazy loading (`loadComponent`).
 
 **State**: Use Angular Signals (`signal()`, `computed()`, `effect()`) for all reactive state — not RxJS subjects or NgRx. Never call `signal.mutate()`; use `update()` or `set()`.
 
-**Styling**: Pure CSS, no framework. CSS custom properties (OKLCh color space: `--bright-blue`, `--electric-violet`, `--vivid-pink`, etc.) and font stack (Inter/Inter Tight) are defined in a `<style>` block inside `src/app/app.html` on `:host` — they cascade to all child components. Mobile breakpoint is 650px. Each component has its own `.css` file; global rules go in `src/styles.css`.
+**Styling**: Bootstrap 5 is the CSS framework for all components (CSS loaded via `angular.json` styles, JS bundle via scripts — both already wired). Use Bootstrap utility classes and grid system as the first resort; write custom CSS only when Bootstrap cannot achieve the design. Custom styles go in the component's `.css` file; global overrides go in `src/styles.css`. The existing OKLCh CSS custom properties (`--bright-blue`, `--electric-violet`, etc.) in `src/app/app.html` can be used alongside Bootstrap for brand colours.
 
 **Testing**: Vitest (not Jest). Test files live alongside source as `*.spec.ts`. jsdom is the DOM environment.
 
