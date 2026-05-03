@@ -1,0 +1,113 @@
+.contact-section { background: var(--color-bg-secondary); }
+
+.contact-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-intro {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-10);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .contact-grid { grid-template-columns: 1fr; }
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  text-decoration: none;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-accent);
+}
+
+.contact-card:hover .arrow-icon {
+  transform: translate(2px, -2px);
+  color: var(--color-accent);
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.contact-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.contact-value {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.arrow-icon {
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.contact-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  font-size: var(--text-sm);
+}
+
+.email-link {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  transition: opacity var(--transition-fast);
+}
+
+.email-link:hover { opacity: 0.7; }
+
+.muted { color: var(--color-text-muted); }
+.accent { color: var(--color-accent); }
+.mono { font-family: var(--font-mono); }

@@ -1,0 +1,55 @@
+<nav class="navbar" [class.scrolled]="isScrolled()" [class.menu-open]="menuOpen()" aria-label="Primary">
+  <div class="navbar-inner container">
+
+    <button type="button" class="logo" (click)="scrollTo('hero')" aria-label="Go to top">
+      <span class="logo-bracket mono">&lt;</span>
+      <span class="logo-name">JG</span>
+      <span class="logo-bracket mono">/&gt;</span>
+    </button>
+
+    <ul class="nav-links" role="list">
+      @for (link of links; track link.sectionId) {
+        <li>
+          <button
+            type="button"
+            class="nav-link"
+            [class.active]="scroll.activeSection() === link.sectionId"
+            (click)="scrollTo(link.sectionId)"
+          >
+            {{ link.label }}
+          </button>
+        </li>
+      }
+    </ul>
+
+    <div class="nav-actions">
+      <app-theme-toggle />
+      <button
+        type="button"
+        class="hamburger"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="bar" [class.open]="menuOpen()"></span>
+        <span class="bar" [class.open]="menuOpen()"></span>
+        <span class="bar" [class.open]="menuOpen()"></span>
+      </button>
+    </div>
+  </div>
+
+  @if (menuOpen()) {
+    <div class="mobile-drawer">
+      @for (link of links; track link.sectionId) {
+        <button
+          type="button"
+          class="mobile-nav-link"
+          [class.active]="scroll.activeSection() === link.sectionId"
+          (click)="scrollTo(link.sectionId); closeMenu()"
+        >
+          <span class="mono accent">// </span>{{ link.label }}
+        </button>
+      }
+    </div>
+  }
+</nav>

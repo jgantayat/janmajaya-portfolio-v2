@@ -1,0 +1,32 @@
+<div class="timeline-item" [class.current]="isCurrent()">
+  <div class="timeline-dot">
+    @if (isCurrent()) { <span class="pulse-ring"></span> }
+  </div>
+  <div class="timeline-content card">
+    <div class="timeline-header">
+      <div class="timeline-meta">
+        <h3 class="timeline-title">{{ title() }}</h3>
+        <span class="timeline-org">{{ organisation() }}</span>
+      </div>
+      <div class="timeline-info">
+        <span class="timeline-period mono">{{ period() }}</span>
+        <span class="timeline-location">{{ location() }}</span>
+      </div>
+    </div>
+    @if (description()) {
+      <p class="timeline-description">{{ description() }}</p>
+    }
+    @if (score()) {
+      <div class="timeline-score">
+        <span class="score-badge">{{ score() }}</span>
+      </div>
+    }
+    @if (tags().length) {
+      <div class="timeline-tags">
+        @for (tag of tags(); track tag) {
+          <app-tag [label]="tag" />
+        }
+      </div>
+    }
+  </div>
+</div>

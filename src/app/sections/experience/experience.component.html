@@ -1,0 +1,27 @@
+<section id="experience" class="section experience-section">
+  <div class="container">
+    <div appRevealOnScroll>
+      <app-section-title
+        title="Experience"
+        label="03. experience"
+        subtitle="Where I've worked and what I've built."
+      />
+    </div>
+
+    <div class="timeline">
+      @for (item of jobs; track item.title; let i = $index) {
+        <div appRevealOnScroll [revealDelay]="i * 100">
+          <app-timeline-item
+            [title]="item.title"
+            [organisation]="item.organisation"
+            [period]="item.period"
+            [location]="item.location"
+            [description]="item.description"
+            [tags]="item.tags"
+            [isCurrent]="item.isCurrent ?? false"
+          />
+        </div>
+      }
+    </div>
+  </div>
+</section>

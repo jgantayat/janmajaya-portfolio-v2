@@ -1,0 +1,126 @@
+<section id="about" class="section about-section">
+  <div class="container">
+
+    <div class="about-grid">
+
+      <div class="about-bio" appRevealOnScroll>
+        <app-section-title
+          title="About Me"
+          label="01. about"
+          subtitle="A developer who loves clean architecture."
+        />
+
+        @for (para of info.bio; track $index) {
+          <p class="bio-paragraph">{{ para }}</p>
+        }
+
+        <div class="stats-grid">
+          @for (stat of stats; track stat.label) {
+            <div class="stat-card">
+              <div class="stat-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path [attr.d]="stat.icon"/>
+                </svg>
+              </div>
+              <div class="stat-value mono accent">{{ stat.value }}</div>
+              <div class="stat-label">{{ stat.label }}</div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="about-card card" appRevealOnScroll [revealDelay]="150">
+        <div class="card-header-bar">
+          <span class="mono">quick_facts.json</span>
+          <div class="window-dots" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="facts-list">
+          <div class="fact-item">
+            <span class="fact-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </span>
+            <div class="fact-content">
+              <span class="fact-key mono">location</span>
+              <span class="fact-value">{{ info.location }}</span>
+            </div>
+          </div>
+
+          <div class="fact-item">
+            <span class="fact-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/>
+              </svg>
+            </span>
+            <div class="fact-content">
+              <span class="fact-key mono">role</span>
+              <span class="fact-value">{{ info.title }}</span>
+            </div>
+          </div>
+
+          <div class="fact-item">
+            <span class="fact-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+                <path d="M16 3.13a4 4 0 010 7.75"/>
+              </svg>
+            </span>
+            <div class="fact-content">
+              <span class="fact-key mono">company</span>
+              <span class="fact-value">Cognizant</span>
+            </div>
+          </div>
+
+          <div class="fact-item">
+            <span class="fact-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/>
+              </svg>
+            </span>
+            <div class="fact-content">
+              <span class="fact-key mono">languages</span>
+              <span class="fact-value">English · Hindi · Odia</span>
+            </div>
+          </div>
+
+          <div class="fact-item">
+            <span class="fact-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </span>
+            <div class="fact-content">
+              <span class="fact-key mono">interests</span>
+              <span class="fact-value">Web Dev · Reading · Badminton</span>
+            </div>
+          </div>
+
+          <div class="fact-item">
+            <span class="fact-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </span>
+            <div class="fact-content">
+              <span class="fact-key mono">status</span>
+              <span class="fact-value available">
+                <span class="available-dot" aria-hidden="true"></span>
+                Open to opportunities
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

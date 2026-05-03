@@ -1,0 +1,46 @@
+<section id="contact" class="section contact-section">
+  <div class="container">
+    <div class="contact-inner">
+
+      <div appRevealOnScroll>
+        <app-section-title
+          title="Get In Touch"
+          label="07. contact"
+          subtitle="Open to opportunities and collaborations."
+          align="center"
+        />
+      </div>
+
+      <p class="contact-intro" appRevealOnScroll [revealDelay]="100">
+        Whether it's a project, a new opportunity, or just to say hello — my inbox is always open.
+      </p>
+
+      <div class="contact-grid" appRevealOnScroll [revealDelay]="200">
+        @for (method of methods; track method.label) {
+          <a [href]="method.href" class="contact-card card" target="_blank" rel="noopener noreferrer">
+            <div class="contact-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path [attr.d]="method.iconPath"/>
+              </svg>
+            </div>
+            <div class="contact-info">
+              <span class="contact-label mono">{{ method.label }}</span>
+              <span class="contact-value">{{ method.value }}</span>
+            </div>
+            <svg class="arrow-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        }
+      </div>
+
+      <div class="contact-cta" appRevealOnScroll [revealDelay]="300">
+        <span class="mono muted">or just send a direct email →</span>
+        <a [href]="'mailto:' + info.email" class="email-link accent mono">{{ info.email }}</a>
+      </div>
+
+    </div>
+  </div>
+</section>
