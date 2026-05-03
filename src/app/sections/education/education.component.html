@@ -1,0 +1,27 @@
+<section id="education" class="section">
+  <div class="container">
+    <div appRevealOnScroll>
+      <app-section-title
+        title="Education"
+        label="04. education"
+        subtitle="The foundation that got me here."
+      />
+    </div>
+
+    <div class="timeline">
+      @for (item of edu; track item.institution; let i = $index) {
+        <div appRevealOnScroll [revealDelay]="i * 100">
+          <app-timeline-item
+            [title]="item.degree + ' · ' + item.field"
+            [organisation]="item.institution"
+            [period]="item.period"
+            [location]="item.location"
+            [description]="item.description"
+            [score]="item.score"
+            [tags]="item.tags"
+          />
+        </div>
+      }
+    </div>
+  </div>
+</section>

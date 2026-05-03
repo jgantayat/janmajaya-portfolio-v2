@@ -1,0 +1,46 @@
+<section id="projects" class="section projects-section">
+  <div class="container">
+    <div appRevealOnScroll>
+      <app-section-title
+        title="Projects"
+        label="05. projects"
+        subtitle="Things I've designed and built."
+      />
+    </div>
+
+    <div class="filter-row" appRevealOnScroll [revealDelay]="100" role="tablist" aria-label="Project filter">
+      @for (f of filters; track f) {
+        <button
+          type="button"
+          role="tab"
+          class="filter-chip mono"
+          [class.active]="activeFilter() === f"
+          [attr.aria-selected]="activeFilter() === f"
+          (click)="setFilter(f)"
+        >
+          {{ f }}
+        </button>
+      }
+    </div>
+
+    <div class="projects-grid">
+      @for (proj of filteredProjects(); track proj.title; let i = $index) {
+        <div appRevealOnScroll [revealDelay]="i * 80">
+          <app-project-card
+            [title]="proj.title"
+            [description]="proj.description"
+            [techStack]="proj.techStack"
+            [githubUrl]="proj.githubUrl ?? ''"
+            [liveUrl]="proj.liveUrl ?? ''"
+          />
+        </div>
+      }
+    </div>
+
+    @if (filteredProjects().length === 0) {
+      <div class="no-projects mono">
+        <span class="accent">// </span>No projects match that filter yet.
+      </div>
+    }
+  </div>
+</section>

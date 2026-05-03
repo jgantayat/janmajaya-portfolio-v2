@@ -1,0 +1,31 @@
+<section id="skills" class="section">
+  <div class="container">
+    <div appRevealOnScroll>
+      <app-section-title
+        title="Skills"
+        label="02. skills"
+        subtitle="Technologies I work with every day."
+      />
+    </div>
+
+    <div class="skills-grid">
+      @for (cat of categories; track cat.category; let i = $index) {
+        <div class="skill-card card" appRevealOnScroll [revealDelay]="i * 80">
+          <div class="skill-card-header">
+            <div class="skill-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path [attr.d]="cat.icon"/>
+              </svg>
+            </div>
+            <h3 class="skill-category">{{ cat.category }}</h3>
+          </div>
+          <div class="skill-tags">
+            @for (skill of cat.skills; track skill) {
+              <app-tag [label]="skill" />
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
