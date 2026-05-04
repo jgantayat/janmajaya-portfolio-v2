@@ -1,59 +1,172 @@
-# JanmajayaPortfolio
+# Janmajaya Gantayat — Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+Personal portfolio for **Janmajaya Gantayat**, Java Full Stack Developer based in Bengaluru. A single-page Angular 21 site with a custom "Coder's Dark" design system, signal-driven state, and a persisted dark/light theme.
 
-## Development server
+> **Live demo:** _add your deployment URL here_
+> **Source plan:** [`_execution/portfolio-execution.md`](./_execution/portfolio-execution.md)
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+## Features
+
+- **8 scrolling sections** — Hero, About, Skills, Experience, Education, Projects, Certifications, Contact
+- **Matrix-rain canvas hero** — pure JS on `<canvas>` (no library), themed via the same accent CSS variable as the rest of the UI
+- **Signal-driven typewriter** — cycles through five role labels using `signal()` + `setTimeout`
+- **Scroll-spy navbar** — active link tracked with `IntersectionObserver`; mobile drawer with animated hamburger
+- **Project filter** — `signal()` + `computed()` filter chips drive the project grid
+- **Persisted theme toggle** — dark / light, written to `localStorage`, syncs `data-theme` on `<html>`
+- **Reveal-on-scroll** — custom `IntersectionObserver` directive with per-element delay
+- **Accessible by default** — semantic HTML, ARIA labels on icon-only controls, visible focus rings, decorative SVGs marked `aria-hidden`, full keyboard nav
+- **SEO-ready** — title, description, keywords, Open Graph and Twitter Card meta in `index.html`
+
+## Tech stack
+
+| Layer | Technology | Version |
+|---|---|---|
+| Framework | [Angular](https://angular.dev) | 21.2 |
+| Language | [TypeScript](https://www.typescriptlang.org/) (strict) | ~5.9 |
+| State | Angular Signals (`signal`, `computed`, `effect`) | built-in |
+| Styling | Plain CSS with custom properties | — |
+| UI utilities | [Bootstrap 5](https://getbootstrap.com/) (CSS + JS bundle) | ^5.2 |
+| Routing | `@angular/router` (single page; ready for lazy routes) | 21.2 |
+| Build | `@angular/build:application` (esbuild + Vite dev server) | 21.2 |
+| Tests | [Vitest](https://vitest.dev/) on `jsdom` | ^4.0 |
+| Tooling | Prettier 3, npm 10.9 | — |
+
+Fonts: **Inter** (UI) + **JetBrains Mono** (code accents), loaded from Google Fonts.
+
+## Project structure
+
+```
+src/
+├── index.html                 # SEO meta + font preconnects + data-theme="dark"
+├── main.ts                    # bootstrapApplication(App, appConfig)
+├── styles.css                 # design tokens, reset, utilities
+└── app/
+    ├── app.{ts,html,css}      # root shell — hosts <app-layout/>
+    ├── app.config.ts          # router + global error listener
+    ├── app.routes.ts          # routes (currently single-page)
+    ├── core/
+    │   ├── models/portfolio.model.ts
+    │   └── services/
+    │       ├── theme.service.ts   # signal + localStorage + matchMedia
+    │       └── scroll.service.ts  # IntersectionObserver scroll-spy
+    ├── data/
+    │   └── portfolio.data.ts  # all content lives here (single source of truth)
+    ├── shared/
+    │   ├── directives/reveal-on-scroll.directive.ts
+    │   └── components/        # SectionTitle, Tag, TimelineItem, ProjectCard, ThemeToggle
+    ├── layout/
+    │   ├── layout.component.{ts,html}     # shell that composes the page
+    │   ├── navbar/navbar.component.{ts,html,css}
+    │   └── footer/footer.component.{ts,html,css}
+    └── sections/
+        ├── hero/             # matrix rain + typewriter + CTAs
+        ├── about/            # bio + stats + sticky quick-facts card
+        ├── skills/           # 6 category cards
+        ├── experience/       # timeline (current job pulses)
+        ├── education/        # timeline (degree, institution, score)
+        ├── projects/         # signal-filtered card grid
+        ├── certifications/   # badge cards
+        └── contact/          # icon grid + email CTA
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Getting started
 
-## Code scaffolding
+### Prerequisites
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Node.js** ≥ 20 (Angular 21 requirement)
+- **npm** 10+
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Install & run
 
 ```bash
-ng generate --help
+npm install
+npm start          # dev server at http://localhost:4200
 ```
 
-## Building
-
-To build the project run:
+### Other scripts
 
 ```bash
-ng build
+npm run build      # production build → dist/janmajaya-portfolio/
+npm run watch      # dev build in watch mode (no server)
+npm test           # run unit tests via Vitest
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+To run a single test file:
 
 ```bash
-ng test
+npx vitest run src/app/app.spec.ts
 ```
 
-## Running end-to-end tests
+## Personalising the content
 
-For end-to-end (e2e) testing, run:
+All copy lives in **`src/app/data/portfolio.data.ts`** — the components import from there. Update the typed exports to change what the site shows:
+
+- `personalInfo` — name, title, tagline, bio paragraphs, email, phone, location, social links, resume URL, typewriter roles
+- `stats` — hero stat cards (value + label + SVG icon path)
+- `skillCategories` — six category groups with their tags
+- `experience`, `education` — timeline entries (set `isCurrent: true` to add the pulsing dot)
+- `projects` — cards (filterable by `techStack`)
+- `certifications` — badge colour, initial, optional `verifyUrl`
+- `contactMethods`, `navLinks`
+
+**Resume PDF:** drop yours at `src/assets/JANMAJAYA-GANTAYAT-Resume.pdf` — the hero "Resume" button already points there.
+
+## Architecture rules (Angular v21 dialect)
+
+This project enforces the modern v21 conventions — see [`CLAUDE.md`](./CLAUDE.md) and [`.claude/skills/angular-best-practice/SKILL.md`](./.claude/skills/angular-best-practice/SKILL.md):
+
+- **No `standalone: true`** — it's the default in v20+
+- **`ChangeDetectionStrategy.OnPush`** on every component
+- **`input()` / `output()`** functions instead of `@Input` / `@Output`
+- **`inject()`** instead of constructor injection
+- **`host` object** instead of `@HostBinding` / `@HostListener`
+- **`[class.foo]` / `[style.foo]`** bindings instead of `ngClass` / `ngStyle`
+- **Native control flow** (`@if`, `@for`, `@switch`)
+- **`NgOptimizedImage`** for static raster images
+- **WCAG AA** baseline accessibility
+
+## Design system
+
+CSS custom properties define both themes in `src/styles.css`. Brand tokens at a glance:
+
+| Token | Value (dark) | Usage |
+|---|---|---|
+| `--color-accent` | `#FF6B35` | Primary orange-red |
+| `--color-bg-primary` | `#0D0D1A` | Page background |
+| `--color-bg-card` | `#161628` | Cards |
+| `--color-border` | `#1E1E3E` | Borders |
+| `--font-sans` | Inter | Body / UI |
+| `--font-mono` | JetBrains Mono | Code accents |
+| `--radius-sm` | `3px` | Sharp-modern radius |
+
+Light mode swaps the same variable names with light equivalents — every component renders correctly in both themes without conditional code.
+
+## Deployment
+
+The production build outputs static assets to `dist/janmajaya-portfolio/browser/` — deploy anywhere that serves static files.
 
 ```bash
-ng e2e
+npm run build
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Common targets:
 
-## Additional Resources
+- **Netlify** — drag `dist/janmajaya-portfolio/browser/` into the dashboard, or connect the repo and set publish dir to that path
+- **Vercel** — `vercel --prod` from the repo root
+- **GitHub Pages** — `ng deploy` (with [`@angular-builders/github-pages`](https://github.com/angular-schule/angular-cli-ghpages))
+- **Firebase Hosting** — `firebase deploy`
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## License
+
+Personal project — no license declared. Code is shared for reference; please ask before reusing the design verbatim for your own site.
+
+## Author
+
+**Janmajaya Gantayat**
+Java Full Stack Developer · Bengaluru, India
+
+- GitHub — [@jgantayat](https://github.com/jgantayat)
+- LinkedIn — [in/janmajaya](https://linkedin.com/in/janmajaya)
+- Email — gantayatjanmajaya@gmail.com
