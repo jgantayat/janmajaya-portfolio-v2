@@ -18,10 +18,17 @@ export interface Stat {
   icon: string;
 }
 
+export interface Skill {
+  name: string;
+  iconKey?: string;
+  iconVariant?: string;
+  fallbackPath?: string;
+}
+
 export interface SkillCategory {
   category: string;
   icon: string;
-  skills: string[];
+  skills: Skill[];
 }
 
 export interface ExperienceItem {
@@ -59,8 +66,9 @@ export interface Certification {
   issuer: string;
   year?: string;
   verifyUrl?: string;
-  badgeColor: string;
-  badgeInitial: string;
+  imageUrl?: string;
+  badgeColor?: string;
+  badgeInitial?: string;
 }
 
 export interface ContactMethod {

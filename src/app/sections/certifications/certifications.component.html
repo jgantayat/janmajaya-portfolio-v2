@@ -10,31 +10,50 @@
 
     <div class="cert-grid">
       @for (cert of certs; track cert.name; let i = $index) {
-        <div class="cert-card card" appRevealOnScroll [revealDelay]="i * 80">
+        <article class="cert-card card" appRevealOnScroll [revealDelay]="i * 80">
 
-          <div
-            class="cert-badge"
-            [style.background]="cert.badgeColor + '22'"
-            [style.border-color]="cert.badgeColor + '66'"
-            aria-hidden="true"
-          >
-            <span class="badge-initial mono" [style.color]="cert.badgeColor">{{ cert.badgeInitial }}</span>
-          </div>
+          @if (cert.verifyUrl) {
+            <a
+              [href]="cert.verifyUrl"
+              target="_blank"
+              rel="noopener"
+              class="cert-image-link"
+              [attr.aria-label]="'View credential for ' + cert.name"
+            >
+              <img
+                [ngSrc]="cert.imageUrl ?? ''"
+                [alt]="cert.name + ' certificate'"
+                width="800"
+                height="500"
+                loading="lazy"
+                class="cert-image"
+              />
+            </a>
+          } @else if (cert.imageUrl) {
+            <img
+              [ngSrc]="cert.imageUrl"
+              [alt]="cert.name + ' certificate'"
+              width="800"
+              height="500"
+              loading="lazy"
+              class="cert-image"
+            />
+          }
 
           <div class="cert-info">
             <h3 class="cert-name">{{ cert.name }}</h3>
             <span class="cert-issuer mono">{{ cert.issuer }}</span>
+            @if (cert.verifyUrl) {
+              <a
+                [href]="cert.verifyUrl"
+                target="_blank"
+                rel="noopener"
+                class="verify-link mono"
+              >verify ↗</a>
+            }
           </div>
 
-          @if (cert.verifyUrl) {
-            <a [href]="cert.verifyUrl" target="_blank" rel="noopener" class="verify-link mono" aria-label="Verify certification">
-              verify ↗
-            </a>
-          } @else {
-            <span class="verified-badge mono">✓ verified</span>
-          }
-
-        </div>
+        </article>
       }
     </div>
   </div>

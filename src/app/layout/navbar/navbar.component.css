@@ -45,6 +45,18 @@
 
 .logo-name { letter-spacing: 0.05em; }
 
+.logo-site-title {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.03em;
+  margin-left: var(--space-3);
+}
+
+@media (max-width: 600px) {
+  .logo-site-title { display: none; }
+}
+
 .nav-links {
   display: flex;
   align-items: center;
