@@ -9,13 +9,14 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { ScrollService } from '../../core/services/scroll.service';
 import { personalInfo } from '../../data/portfolio.data';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-hero',
-  imports: [RevealOnScrollDirective],
+  imports: [RevealOnScrollDirective, NgOptimizedImage],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,17 +27,37 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
 
   protected readonly displayedText = signal('');
   protected readonly isDeleting = signal(false);
+  protected readonly quoteIndex = signal(0);
+
+  protected readonly quotes = [
+    '"First, solve the problem. Then, write the code." — John Johnson',
+    '"Any fool can write code a computer can understand. Good programmers write code humans can understand." — M. Fowler',
+    '"Make it work, make it right, make it fast." — Kent Beck',
+    '"Talk is cheap. Show me the code." — Linus Torvalds',
+    '"The best error message is the one that never shows up." — Thomas Fuchs',
+    '"Simplicity is the soul of efficiency." — Austin Freeman',
+    '"Code is like humor. When you have to explain it, it\'s bad." — Cory House',
+    '"Programs must be written for people to read." — Hal Abelson',
+  ];
 
   private readonly canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('matrixCanvas');
 
   private roleIndex = 0;
   private charIndex = 0;
   private typeTimer: ReturnType<typeof setTimeout> | null = null;
+  private quoteTimer: ReturnType<typeof setInterval> | null = null;
   private animFrame: number | null = null;
   private resizeHandler: (() => void) | null = null;
 
   ngOnInit(): void {
     this.tickTypewriter();
+    this.startQuoteRotation();
+  }
+
+  private startQuoteRotation(): void {
+    this.quoteTimer = setInterval(() => {
+      this.quoteIndex.update(i => (i + 1) % this.quotes.length);
+    }, 8000);
   }
 
   ngAfterViewInit(): void {
@@ -45,6 +66,7 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.typeTimer) clearTimeout(this.typeTimer);
+    if (this.quoteTimer) clearInterval(this.quoteTimer);
     if (this.animFrame) cancelAnimationFrame(this.animFrame);
     if (this.resizeHandler) window.removeEventListener('resize', this.resizeHandler);
   }

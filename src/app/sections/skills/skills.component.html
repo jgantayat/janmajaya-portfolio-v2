@@ -19,9 +19,9 @@
             </div>
             <h3 class="skill-category">{{ cat.category }}</h3>
           </div>
-          <div class="skill-tags">
-            @for (skill of cat.skills; track skill) {
-              <app-tag [label]="skill" />
+          <div class="skill-badges">
+            @for (skill of cat.skills; track skill.name) {
+              <app-skill-badge [skill]="skill" />
             }
           </div>
         </div>
