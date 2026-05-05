@@ -8,18 +8,51 @@
       />
     </div>
 
-    <div class="timeline">
+    <div class="edu-timeline">
       @for (item of edu; track item.institution; let i = $index) {
-        <div appRevealOnScroll [revealDelay]="i * 100">
-          <app-timeline-item
-            [title]="item.degree + ' · ' + item.field"
-            [organisation]="item.institution"
-            [period]="item.period"
-            [location]="item.location"
-            [description]="item.description"
-            [score]="item.score"
-            [tags]="item.tags"
-          />
+        <div
+          class="edu-row"
+          [class.edu-right]="i % 2 !== 0"
+          appRevealOnScroll
+          [revealDelay]="i * 120"
+        >
+          <div class="edu-card-slot">
+            <article class="edu-card card">
+              <div class="edu-card-header">
+                <div class="edu-title-group">
+                  <h3 class="edu-degree">{{ item.degree }}</h3>
+                  <span class="edu-field">{{ item.field }}</span>
+                  <span class="edu-org">{{ item.institution }}</span>
+                </div>
+                <div class="edu-info">
+                  <span class="edu-period mono">{{ item.period }}</span>
+                  <span class="edu-location">{{ item.location }}</span>
+                </div>
+              </div>
+
+              @if (item.description) {
+                <p class="edu-description">{{ item.description }}</p>
+              }
+
+              @if (item.score) {
+                <span class="score-badge mono">{{ item.score }}</span>
+              }
+
+              @if (item.tags.length) {
+                <div class="edu-tags">
+                  @for (tag of item.tags; track tag) {
+                    <app-tag [label]="tag" />
+                  }
+                </div>
+              }
+            </article>
+          </div>
+
+          <div class="edu-dot-col">
+            <div class="edu-dot"></div>
+          </div>
+
+          <div class="edu-spacer"></div>
         </div>
       }
     </div>

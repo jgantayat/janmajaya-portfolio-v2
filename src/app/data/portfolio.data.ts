@@ -6,6 +6,7 @@ import {
   NavLink,
   PersonalInfo,
   Project,
+  Recommendation,
   Skill,
   SkillCategory,
   Stat,
@@ -154,6 +155,26 @@ export const experience: ExperienceItem[] = [
 
 export const education: EducationItem[] = [
   {
+    degree: 'Secondary School Certificate',
+    field: '10th Grade',
+    institution: 'Maharishi Vidya Mandir',
+    period: '2016',
+    location: 'Balasore, Odisha',
+    description: '',
+    score: 'CGPA: 10 / 10',
+    tags: ['10th Grade', 'CGPA 10'],
+  },
+  {
+    degree: 'Higher Secondary Certificate',
+    field: 'Science (12th Grade)',
+    institution: 'Royal College of Science and Technology',
+    period: '2016 – 2018',
+    location: 'Bhubaneswar, Odisha',
+    description: '',
+    score: '79.67%',
+    tags: ['12th Grade', 'Science Stream'],
+  },
+  {
     degree: 'Bachelor of Technology',
     field: 'Electrical Engineering',
     institution: 'Institute of Technical Education and Research, SOA University',
@@ -170,18 +191,51 @@ export const projects: Project[] = [
   {
     title: 'Portfolio Website',
     description:
-      'This portfolio — built with Angular 21, CSS custom properties, Matrix rain hero, and smooth-scroll SPA navigation. Developed using Claude as an AI coding companion.',
-    techStack: ['Angular 21', 'TypeScript', 'CSS', 'Angular Signals'],
-    liveUrl: '',
+      'This portfolio — Angular 21 single-page app with signal-driven state, custom Coder\'s Dark design system, matrix-rain hero animation, and WCAG AA accessibility. Built with Claude as an AI coding companion.',
+    techStack: ['Angular 21', 'TypeScript', 'Angular Signals', 'CSS'],
+    githubUrl: 'https://github.com/jgantayat/janmajaya-portfolio-v2',
+    iconKey: 'angular',
     featured: true,
   },
   {
-    title: 'Spring Boot Microservices Starter',
+    title: 'DevTrack',
     description:
-      'Reusable Spring Boot starter scaffolding microservices with JWT auth, OpenAPI docs, structured logging, and Docker — pulled from patterns refined across 30+ production services.',
-    techStack: ['Java', 'Spring Boot', 'Docker'],
-    githubUrl: '',
-    featured: false,
+      'Personal developer productivity dashboard with task management, goal tracking, and calendar journaling. Built with Angular 21 + NG-ZORRO; persists locally via browser storage with no backend.',
+    techStack: ['Angular 21', 'TypeScript', 'NG-ZORRO', 'Angular Signals'],
+    githubUrl: 'https://github.com/jgantayat/devtrack',
+    iconKey: 'angular',
+  },
+  {
+    title: 'Angular Concepts',
+    description:
+      'Learning playground exploring core Angular concepts — component patterns, dependency injection, RxJS, signals, and modern Angular best practices through hands-on examples.',
+    techStack: ['Angular', 'TypeScript', 'Angular CLI'],
+    githubUrl: 'https://github.com/jgantayat/AngularConcepts',
+    iconKey: 'angular',
+  },
+  {
+    title: 'Learn AG Grid',
+    description:
+      'Angular workspace exploring AG Grid functionality — column definitions, cell renderers, sorting, filtering, and grid integration patterns inside an Angular CLI app.',
+    techStack: ['Angular 21', 'TypeScript', 'AG Grid'],
+    githubUrl: 'https://github.com/jgantayat/learn_AG_Grid',
+    iconKey: 'angular',
+  },
+  {
+    title: 'My Bookmarks App',
+    description:
+      'Vanilla-JS bookmark manager built as a frontend exercise using Claude Code. Add/edit/delete bookmarks, category filters, live search, dark/light themes — zero dependencies, persisted via localStorage.',
+    techStack: ['JavaScript', 'HTML5', 'CSS3', 'localStorage'],
+    githubUrl: 'https://github.com/jgantayat/my-bookmarks-app',
+    iconKey: 'javascript',
+  },
+  {
+    title: 'Spring AI',
+    description:
+      'Java + Spring Framework project exploring AI/ML integration patterns. Experiments with Spring AI for building intelligent applications on the Spring ecosystem.',
+    techStack: ['Java', 'Spring', 'Spring AI'],
+    githubUrl: 'https://github.com/jgantayat/spring_ai',
+    iconKey: 'spring',
   },
 ];
 
@@ -216,6 +270,12 @@ export const certifications: Certification[] = [
     imageUrl: 'assets/PMI Agile Certified Practitioner (PMI-ACP).png',
     verifyUrl: 'https://www.linkedin.com/learning/certificates/50387a97b6b4f94f9e7654326805e41dcd64ba920216a817732793cacdc32670',
   },
+  {
+    name: 'Introduction to Git and GitHub',
+    issuer: 'Google / Coursera',
+    imageUrl: 'assets/Google and Coursera certified Introduction to Git and GitHub.png',
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/verify/S5SA8ZFGLNN6',
+  },
 ];
 
 export const contactMethods: ContactMethod[] = [
@@ -245,11 +305,79 @@ export const contactMethods: ContactMethod[] = [
   },
 ];
 
+export const recommendations: Recommendation[] = [
+  {
+    name: 'Bhushan Borul',
+    headline: 'Technical Lead at Cognizant Technology Services',
+    relationship: 'worked with Janmajaya on the same team',
+    date: 'April 14, 2026',
+    text: 'I had the pleasure of working with Janmajaya for nearly a year on our healthcare project, where they excelled as a key contributor in developing Spring Boot microservices. Their deep knowledge of Spring Boot enabled them to design scalable, efficient services that handled complex patient data workflows seamlessly, often proactively optimizing APIs and ensuring high availability under tight deadlines. Janmajaya was an outstanding collaborator, consistently communicating clearly, integrating feedback from cross-functional teams, and fostering a positive team environment that drove our project to successful delivery ahead of schedule. I highly recommend them for any Spring Boot or microservices role—they’re a reliable expert who delivers results.',
+    imageUrl: 'assets/Bhushan_Borul.jpg',
+  },
+  {
+    name: 'Manish Chouhan',
+    headline: 'Java | Spring Boot | Microservices | REST APIs | SQL | React',
+    relationship: 'worked with Janmajaya on the same team',
+    date: 'Cognizant',
+    text: 'I had the pleasure of working with Janmajaya at Cognizant, where we collaborated on the same team. He is a highly skilled and dedicated developer with strong expertise in Java, Spring Boot, Angular, and Microservices architecture. Janmajaya consistently demonstrated excellent problem-solving abilities and a deep understanding of scalable software design. His ability to quickly grasp complex requirements and deliver efficient, high-quality solutions made a significant impact on our projects. He is also proactive, takes ownership of his work, and always ensures timely delivery. Beyond his technical strengths, Janmajaya is a great team player. He communicates effectively, supports his teammates, and contributes positively to the team environment. I would highly recommend Janmajaya to any organization looking for a reliable and talented software engineer, especially in cloud-based and microservices-driven environments.',
+    imageUrl: 'assets/Manish_Chouhan.jpg',
+  },
+  {
+    name: 'Nalni Gupta',
+    headline: 'Software Engineer at Cognizant | Java | Spring Boot | Microservices | Agile',
+    relationship: 'worked with Janmajaya on the same team',
+    date: 'May 30, 2025',
+    text: 'He is really great at his work, very good at the technical skills. He has a good experience of developing and managing applications from scratch.',
+    imageUrl: 'assets/Nalni_Gupta.jpg',
+  },
+  {
+    name: 'Pratik Mohanty',
+    headline: 'Senior Analyst @athenahealth | Ex-EY',
+    relationship: 'worked with Janmajaya on the same team',
+    date: 'September 28, 2023',
+    text: 'Janmejay is a hardworking person. He always seems curious to learn about new things. I have worked with him on many projects and I know how motivated he stays about completing the task. He is one of those people who always finds a new skill to master and is always ready to take up a new technology or skill. Janmajaya has always proven himself worthy of every challenge and is one of the few gifted individuals who can be good at anything and everything.',
+    imageUrl: 'assets/Pratik_Mohanty.jpg',
+  },
+  {
+    name: 'Akansha Pujari',
+    headline: 'Consultant at EY',
+    relationship: 'worked with Janmajaya but on different teams',
+    date: 'September 28, 2023',
+    text: 'Janmajaya is one of the few people who doesn’t shy away from challenges. I have worked with Janmajaya closely in many projects and have been astonished at how keen he has been at making sure he understands the task at hand at a profound level and makes sure everything he does is perfect. Janmajaya is extremely hardworking and has never gotten tired of learning. He responds to constructive criticism in a way only a few people can and has been continuing to do so. He looks at challenges as stepping stones for success. Janmajaya is truly someone who will always continue to inspire and motivate you at everything that he does.',
+    imageUrl: 'assets/Akansha_Pujari.jpg',
+  },
+  {
+    name: 'Dr Swayam Prabha Satpathy',
+    headline: 'Professor, Author, Columnist; Chief Editor Rupkatha Interdisciplinary Journals; Corporate Trainer; Career Counsellor',
+    relationship: 'was Janmajaya’s teacher',
+    date: 'November 8, 2022',
+    text: 'Janmajaya is an able and technically sound. He is a quick learner and is excellent in team management skills. He is hardworking. He is creative and is efficient in executing tasks.',
+    imageUrl: 'assets/Swayam_Prabha_Satpathy.jpg',
+  },
+  {
+    name: 'Dr Sayantan Sinha',
+    headline: 'Technical Trainer AIML, BIGDATA @ GLA University. Ex-AI ML SME for IBM ICE.',
+    relationship: 'was Janmajaya’s mentor',
+    date: 'November 1, 2022',
+    text: 'A dynamic personality and a reliable person to depend on. He has always been diligent and dedicated in whatever responsibilities that were shouldered to him. With solid technical skills and profound organisational skills, he is the best fit for any company for their future growths.',
+    imageUrl: 'assets/Sayantan_Sinha.jpg',
+  },
+  {
+    name: 'Akash Tiwary',
+    headline: 'ASM (Sales) @ Hettich India Pvt Ltd | Ex-Pristyn Care | Ex-Vedantu | Ex-BYJU’S',
+    relationship: 'was Janmajaya’s mentor',
+    date: 'October 10, 2022',
+    text: 'Janmenjay is truly a person with the dedication to learn and grow.',
+    imageUrl: 'assets/Akash_Tiwari.jpg',
+  },
+];
+
 export const navLinks: NavLink[] = [
   { label: 'About', sectionId: 'about' },
   { label: 'Skills', sectionId: 'skills' },
   { label: 'Experience', sectionId: 'experience' },
   { label: 'Projects', sectionId: 'projects' },
   { label: 'Certifications', sectionId: 'certifications' },
+  { label: 'Recommendations', sectionId: 'recommendations' },
   { label: 'Contact', sectionId: 'contact' },
 ];

@@ -1,1 +1,158 @@
-.timeline { max-width: 800px; }
+.edu-timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Centre vertical spine */
+.edu-timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  bottom: 20px;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, var(--color-accent), var(--color-border));
+  z-index: 0;
+}
+
+/* 3-column grid: [left-card] [centre-dot] [right-card] */
+.edu-row {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  grid-template-areas: "card dot empty";
+  align-items: start;
+  margin-bottom: var(--space-10);
+}
+
+/* Flip to right column */
+.edu-right {
+  grid-template-areas: "empty dot card";
+}
+
+.edu-card-slot { grid-area: card; }
+.edu-dot-col   { grid-area: dot; display: flex; flex-direction: column; align-items: center; padding-top: var(--space-5); z-index: 1; }
+.edu-spacer    { grid-area: empty; }
+
+/* Dot — matches existing timeline dot style */
+.edu-dot {
+  width: 20px;
+  height: 20px;
+  background: var(--color-accent);
+  border: 3px solid var(--color-bg-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* Card — inherits .card base styles; matching existing timeline-content */
+.edu-card {
+  padding: var(--space-5) var(--space-6);
+  transition: transform var(--transition-base), border-color var(--transition-base);
+}
+
+.edu-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-accent);
+}
+
+.edu-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
+}
+
+.edu-title-group { flex: 1; min-width: 0; }
+
+.edu-degree {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.edu-field {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: 2px;
+}
+
+.edu-org {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-accent);
+  display: block;
+  margin-top: var(--space-1);
+}
+
+.edu-info { text-align: right; flex-shrink: 0; }
+
+.edu-period {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  display: block;
+}
+
+.edu-location {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: var(--space-1);
+}
+
+.edu-description {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+}
+
+.score-badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  background: var(--color-accent-dim);
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+}
+
+.edu-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+/* Mobile — collapse to single left-aligned column */
+@media (max-width: 768px) {
+  .edu-timeline::before {
+    left: 10px;
+    transform: none;
+  }
+
+  .edu-row,
+  .edu-right {
+    grid-template-columns: 20px 1fr;
+    grid-template-areas: "dot card";
+    margin-bottom: var(--space-8);
+  }
+
+  .edu-spacer  { display: none; }
+  .edu-dot-col { align-items: flex-start; }
+  .edu-info    { text-align: left; }
+}
+
+@media (max-width: 480px) {
+  .edu-card { padding: var(--space-4) var(--space-4); }
+  .edu-degree { font-size: var(--text-lg); }
+}
