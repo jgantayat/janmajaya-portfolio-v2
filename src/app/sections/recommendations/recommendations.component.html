@@ -1,0 +1,88 @@
+<section id="recommendations" class="section recommendations-section">
+  <div class="container">
+    <div appRevealOnScroll>
+      <app-section-title
+        title="Recommendations"
+        label="07. recommendations"
+        subtitle="Words from people I've worked with."
+        align="center"
+      />
+    </div>
+
+    <div
+      class="rec-carousel"
+      appRevealOnScroll
+      [revealDelay]="120"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Professional recommendations"
+      (mouseenter)="autoplay.pause()"
+      (mouseleave)="autoplay.resume()"
+    >
+      <button
+        type="button"
+        class="rec-nav rec-nav-prev"
+        (click)="prev()"
+        aria-label="Previous recommendation"
+      >‹</button>
+
+      <div class="rec-viewport">
+        @for (rec of recs; track rec.name; let i = $index) {
+          <article
+            class="rec-slide card"
+            [class.active]="i === activeIndex()"
+            role="group"
+            aria-roledescription="slide"
+            [attr.aria-label]="(i + 1) + ' of ' + recs.length + ': ' + rec.name"
+            [attr.aria-hidden]="i !== activeIndex()"
+            [attr.inert]="i !== activeIndex() ? '' : null"
+          >
+            <div class="rec-photo-wrap">
+              <img
+                [ngSrc]="rec.imageUrl"
+                [alt]="rec.name + ' headshot'"
+                width="160"
+                height="160"
+                [priority]="i === 0"
+                class="rec-photo"
+              />
+            </div>
+
+            <div class="rec-body">
+              <span class="quote-mark quote-open" aria-hidden="true">“</span>
+              <p class="rec-text">{{ rec.text }}</p>
+              <span class="quote-mark quote-close" aria-hidden="true">”</span>
+
+              <div class="rec-meta">
+                <h3 class="rec-name">{{ rec.name }}</h3>
+                <p class="rec-headline">{{ rec.headline }}</p>
+                <p class="rec-relationship mono">{{ rec.relationship }} · {{ rec.date }}</p>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+
+      <button
+        type="button"
+        class="rec-nav rec-nav-next"
+        (click)="next()"
+        aria-label="Next recommendation"
+      >›</button>
+    </div>
+
+    <div class="rec-dots" role="tablist" aria-label="Choose recommendation">
+      @for (rec of recs; track rec.name; let i = $index) {
+        <button
+          type="button"
+          role="tab"
+          class="rec-dot"
+          [class.active]="i === activeIndex()"
+          [attr.aria-selected]="i === activeIndex()"
+          [attr.aria-label]="'Go to recommendation ' + (i + 1) + ': ' + rec.name"
+          (click)="setIndex(i)"
+        ></button>
+      }
+    </div>
+  </div>
+</section>

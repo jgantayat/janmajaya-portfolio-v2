@@ -1,0 +1,75 @@
+Prompt
+
+I want to add a new section of Recommendations that I have received in LinkedIn in my website. The content are shared below
+Note - Images I have shaved with their respective name inside the /assets folder
+￼
+Bhushan Borul
+Technical Lead at Cognizant Technology Services
+April 14, 2026, Bhushan worked with Janmajaya on the same team
+
+I had the pleasure of working with Janmajaya for nearly a year on our healthcare project, where they excelled as a key contributor in developing Spring Boot microservices. Their deep knowledge of Spring Boot enabled them to design scalable, efficient services that handled complex patient data workflows seamlessly, often proactively optimizing APIs and ensuring high availability under tight deadlines. Janmajaya was an outstanding collaborator, consistently communicating clearly, integrating feedback from cross-functional teams, and fostering a positive team environment that drove our project to successful delivery ahead of schedule. I highly recommend them for any Spring Boot or microservices role—they’re a reliable expert who delivers results.
+
+
+
+￼
+Manish Chouhan 
+immediate joiner @cts | Java |Spring Boot | Microservices | REST APIs | SQL | React Cognizant
+Manish worked with Janmajaya on the same team
+
+I had the pleasure of working with Janmajaya at Cognizant, where we collaborated on the same team. He is a highly skilled and dedicated developer with strong expertise in Java, Spring Boot, Angular, and Microservices architecture.
+
+Janmajaya consistently demonstrated excellent problem-solving abilities and a deep understanding of scalable software design. His ability to quickly grasp complex requirements and deliver efficient, high-quality solutions made a significant impact on our projects. He is also proactive, takes ownership of his work, and always ensures timely delivery.
+
+Beyond his technical strengths, Janmajaya is a great team player. He communicates effectively, supports his teammates, and contributes positively to the team environment.
+
+I would highly recommend Janmajaya to any organization looking for a reliable and talented software engineer, especially in cloud-based and microservices-driven environments.
+
+
+￼
+Nalni Gupta
+Software Engineer at Cognizant | JAVA | Spring Boot | Microservices | Agile
+May 30, 2025, Nalni worked with Janmajaya on the same team
+
+He is really great at his work, very good at the technical skills. He has a good experience of developing and managing applications from scratch.
+
+￼
+Pratik Mohanty 
+Senior Analyst @athenahealth | Ex-EY
+September 28, 2023, Pratik worked with Janmajaya on the same team
+
+Janmejay is a hardworking person. He always seems curious to learn about new things . I have worked with him on many projects and I know how motivated he stays about completing the task. He is one of those people who always finds a new skill to master and is always ready to take up a new technology or skill. Janmajaya has always proven himself worthy of every challenge and is one of the few gifted individuals who can be good at anything and everything.
+
+￼
+Akansha Pujari 
+Consultant at EY
+September 28, 2023, Akansha worked with Janmajaya but on different teams
+
+Janmajaya is one of the few people who doesn't shy away from challenges. I have worked with Janmajaya closely in many projects and have been astonished at how keen he has been at making sure he understands the task at hand at a profound level and makes sure everything he does is perfect. Janmajaya is extremely hardworking and has never gotten tired of learning. He responds to constructive criticism in a way only a few people can and has been continuing to do so. He looks at challenges as stepping stones for success. Janmajaya is truly someone who will always continue to inspire and motivate you at everything that he does.
+
+￼
+Dr Swayam Prabha Satpathy 
+Professor , Author , Columnist Chief Editor Rupkatha Interdisciplinary journals,Corporate Trainer,career counsellor  
+November 8, 2022, Dr Swayam Prabha was Janmajaya’s teacher
+
+Janmajaya is an able and technically sound.He is a quick learner and is excellent in team management skills . He is hardworking .He is creative and is efficient in executing tasks 
+
+￼
+Dr Sayantan Sinha 
+Technical Trainer AIML, BIGDATA @ GLA Uiversity    Ex- AI ML SME for IBM ICE. 
+Addicted with projects! 
+Hackathon enthusiasts for placement!
+Track owner of Business informatics @ GLA University
+November 1, 2022, Dr Sayantan was Janmajaya’s mentor
+
+
+A dynamic personality and a reliable person to depend on.  
+He has always been diligent and dedicated in whatever responsibilities that were shouldered to him. With solid technical skills and profound organisational skills, he is the best fit for any company for their future growths.
+
+￼
+Akash Tiwary
+ASM(Sales) @Hettich India Pvt Ltd  ||Ex - Pristyn Care||Ex-Vedantu || Ex- BYJU’S ||
+October 10, 2022, Akash was Janmajaya’s mentor
+
+Janmenjay is truly a person with the dedication to learn and grow
+
+Desired design as shared in the below attached image, each recommendation should be in an as shown in the below image, but keep the existing theme as it is. Only take the layout for the design from the image.

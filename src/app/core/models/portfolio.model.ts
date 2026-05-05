@@ -59,6 +59,7 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
+  iconKey?: string;
 }
 
 export interface Certification {
@@ -81,4 +82,13 @@ export interface ContactMethod {
 export interface NavLink {
   label: string;
   sectionId: string;
+}
+
+export interface Recommendation {
+  name: string;
+  headline: string;
+  relationship: string;
+  date: string;
+  text: string;
+  imageUrl: string;
 }

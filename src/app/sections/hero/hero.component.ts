@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { ScrollService } from '../../core/services/scroll.service';
-import { personalInfo } from '../../data/portfolio.data';
+import { personalInfo, stats } from '../../data/portfolio.data';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
@@ -24,6 +24,7 @@ import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scrol
 export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
   protected readonly scroll = inject(ScrollService);
   protected readonly info = personalInfo;
+  protected readonly heroStats = stats.slice(0, 3);
 
   protected readonly displayedText = signal('');
   protected readonly isDeleting = signal(false);

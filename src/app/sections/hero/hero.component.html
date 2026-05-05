@@ -66,15 +66,26 @@
       </div>
 
       <div class="hero-photo" appRevealOnScroll [revealDelay]="200">
-        <div class="photo-frame">
-          <img
-            ngSrc="assets/janmajaya.png"
-            width="600"
-            height="500"
-            priority
-            alt="Janmajaya Gantayat"
-            class="avatar-img"
-          />
+        <div class="photo-wrap">
+          <div class="photo-ring" aria-hidden="true"></div>
+
+          <div class="photo-frame">
+            <img
+              ngSrc="assets/janmajaya.png"
+              width="600"
+              height="500"
+              priority
+              alt="Janmajaya Gantayat"
+              class="avatar-img"
+            />
+          </div>
+
+          @for (stat of heroStats; track stat.label; let i = $index) {
+            <div class="stat-chip" [class]="'stat-chip-' + (i + 1)" [attr.aria-label]="stat.value + ' ' + stat.label">
+              <span class="stat-value">{{ stat.value }}</span>
+              <span class="stat-label">{{ stat.label }}</span>
+            </div>
+          }
         </div>
       </div>
 

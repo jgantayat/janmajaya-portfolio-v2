@@ -23,18 +23,42 @@
       }
     </div>
 
-    <div class="projects-grid">
-      @for (proj of filteredProjects(); track proj.title; let i = $index) {
-        <div appRevealOnScroll [revealDelay]="i * 80">
-          <app-project-card
-            [title]="proj.title"
-            [description]="proj.description"
-            [techStack]="proj.techStack"
-            [githubUrl]="proj.githubUrl ?? ''"
-            [liveUrl]="proj.liveUrl ?? ''"
-          />
-        </div>
-      }
+    <div class="slider-wrap">
+      <button
+        type="button"
+        class="slider-nav slider-nav-prev"
+        (click)="onNavClick(-1)"
+        aria-label="Previous projects"
+      >‹</button>
+
+      <div
+        #track
+        class="projects-track"
+        role="region"
+        aria-label="Project carousel"
+        (mouseenter)="autoplay.pause()"
+        (mouseleave)="autoplay.resume()"
+      >
+        @for (proj of filteredProjects(); track proj.title; let i = $index) {
+          <div class="track-item" appRevealOnScroll [revealDelay]="i * 80">
+            <app-project-card
+              [title]="proj.title"
+              [description]="proj.description"
+              [techStack]="proj.techStack"
+              [githubUrl]="proj.githubUrl ?? ''"
+              [liveUrl]="proj.liveUrl ?? ''"
+              [iconKey]="proj.iconKey ?? ''"
+            />
+          </div>
+        }
+      </div>
+
+      <button
+        type="button"
+        class="slider-nav slider-nav-next"
+        (click)="onNavClick(1)"
+        aria-label="Next projects"
+      >›</button>
     </div>
 
     @if (filteredProjects().length === 0) {

@@ -7,6 +7,7 @@ import { EducationComponent } from '../sections/education/education.component';
 import { ExperienceComponent } from '../sections/experience/experience.component';
 import { HeroComponent } from '../sections/hero/hero.component';
 import { ProjectsComponent } from '../sections/projects/projects.component';
+import { RecommendationsComponent } from '../sections/recommendations/recommendations.component';
 import { SkillsComponent } from '../sections/skills/skills.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -23,6 +24,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     EducationComponent,
     ProjectsComponent,
     CertificationsComponent,
+    RecommendationsComponent,
     ContactComponent,
   ],
   templateUrl: './layout.component.html',
