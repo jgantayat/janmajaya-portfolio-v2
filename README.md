@@ -9,11 +9,16 @@ Personal portfolio for **Janmajaya Gantayat**, Java Full Stack Developer based i
 
 ## Features
 
-- **8 scrolling sections** — Hero, About, Skills, Experience, Education, Projects, Certifications, Contact
+- **9 scrolling sections** — Hero, About, Skills, Experience, Education, Projects, Certifications, Recommendations, Contact
 - **Matrix-rain canvas hero** — pure JS on `<canvas>` (no library), themed via the same accent CSS variable as the rest of the UI
-- **Signal-driven typewriter** — cycles through five role labels using `signal()` + `setTimeout`
+- **Signal-driven typewriter** — cycles through role labels using `signal()` + `setTimeout`
+- **Hero circular photo with floating stat chips** — 360 px circle frame, slowly-rotating dashed accent ring, 3 staggered floating stat cards
 - **Scroll-spy navbar** — active link tracked with `IntersectionObserver`; mobile drawer with animated hamburger
-- **Project filter** — `signal()` + `computed()` filter chips drive the project grid
+- **Projects horizontal slider** — scroll-snap, 3 cards per page, Devicon branded background icons, hover lift + glow pop-up effect, wrap-around autoplay every 3 s
+- **Project filter** — `signal()` + `computed()` filter chips reset the slider and restart the autoplay
+- **Recommendations carousel** — 8 LinkedIn testimonials, CSS Grid stacking (no height flicker between long/short quotes), dot pagination, prev/next nav, 3 s autoplay
+- **Alternating education timeline** — full journey from Secondary (2016) → Higher Secondary (2018) → B.Tech (2022), zig-zag centre-spine layout
+- **Shared autoplay utility** — `createAutoplay(intervalMs, tick, destroyRef)` — interval, hover-pause, `DestroyRef` auto-cleanup, restart on manual interaction; used by both carousels
 - **Persisted theme toggle** — dark / light, written to `localStorage`, syncs `data-theme` on `<html>`
 - **Reveal-on-scroll** — custom `IntersectionObserver` directive with per-element delay
 - **Accessible by default** — semantic HTML, ARIA labels on icon-only controls, visible focus rings, decorative SVGs marked `aria-hidden`, full keyboard nav
@@ -55,19 +60,21 @@ src/
     │   └── portfolio.data.ts  # all content lives here (single source of truth)
     ├── shared/
     │   ├── directives/reveal-on-scroll.directive.ts
-    │   └── components/        # SectionTitle, Tag, TimelineItem, ProjectCard, ThemeToggle
+    │   ├── utils/autoplay.ts  # shared carousel autoplay utility
+    │   └── components/        # SectionTitle, Tag, SkillBadge, TimelineItem, ProjectCard, ThemeToggle
     ├── layout/
     │   ├── layout.component.{ts,html}     # shell that composes the page
     │   ├── navbar/navbar.component.{ts,html,css}
     │   └── footer/footer.component.{ts,html,css}
     └── sections/
-        ├── hero/             # matrix rain + typewriter + CTAs
+        ├── hero/             # matrix rain + typewriter + circular photo + floating stat chips
         ├── about/            # bio + stats + sticky quick-facts card
         ├── skills/           # 6 category cards
         ├── experience/       # timeline (current job pulses)
-        ├── education/        # timeline (degree, institution, score)
-        ├── projects/         # signal-filtered card grid
+        ├── education/        # alternating centre-spine timeline (10th → 12th → B.Tech)
+        ├── projects/         # horizontal scroll-snap slider, filter chips, autoplay
         ├── certifications/   # badge cards
+        ├── recommendations/  # LinkedIn carousel, CSS Grid stacking, autoplay
         └── contact/          # icon grid + email CTA
 ```
 
@@ -104,11 +111,12 @@ npx vitest run src/app/app.spec.ts
 All copy lives in **`src/app/data/portfolio.data.ts`** — the components import from there. Update the typed exports to change what the site shows:
 
 - `personalInfo` — name, title, tagline, bio paragraphs, email, phone, location, social links, resume URL, typewriter roles
-- `stats` — hero stat cards (value + label + SVG icon path)
+- `stats` — hero stat chips (value + label); first 3 are shown as floating chips on the hero photo
 - `skillCategories` — six category groups with their tags
-- `experience`, `education` — timeline entries (set `isCurrent: true` to add the pulsing dot)
-- `projects` — cards (filterable by `techStack`)
-- `certifications` — badge colour, initial, optional `verifyUrl`
+- `experience`, `education` — timeline entries (set `isCurrent: true` to add the pulsing dot on Experience)
+- `projects` — slider cards; `iconKey` drives the Devicon background icon (e.g. `"angular"`, `"spring"`)
+- `certifications` — badge colour, initial, optional `verifyUrl`, optional `imageUrl`
+- `recommendations` — LinkedIn testimonials (`name`, `headline`, `relationship`, `date`, `text`, `imageUrl`)
 - `contactMethods`, `navLinks`
 
 **Resume PDF:** drop yours at `src/assets/JANMAJAYA-GANTAYAT-Resume.pdf` — the hero "Resume" button already points there.
